@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cicd-kube-docker:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cicd-kube-docker</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="vprofile-v2.war">
+      <element id="artifact" artifact-name="cicd-kube-docker:war exploded" />
+    </root>
+  </artifact>
+</component>

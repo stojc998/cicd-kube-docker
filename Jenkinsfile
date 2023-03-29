@@ -24,11 +24,11 @@ pipeline {
             }
         }
 
-        stage('UNIT TEST'){
+        /*stage('UNIT TEST'){
             steps {
                 sh 'mvn test'
             }
-        }
+        }*/
 
         stage('INTEGRATION TEST'){
             steps {

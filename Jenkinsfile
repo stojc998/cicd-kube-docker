@@ -74,7 +74,7 @@ pipeline {
         stage('Build docker app image') {
             steps{
                 script{
-                    dockerImage = docker.build registry + "V:$BUILD_NUMBER"
+                    dockerImage = docker.build registry + "v:$BUILD_NUMBER"
                 }
             }
         }
@@ -83,7 +83,7 @@ pipeline {
             steps{
                 script{
                     docker.withRegistry('', registryCredential){
-                        dockerImage.push("V$BUILD_NUMBER")
+                        dockerImage.push("v$BUILD_NUMBER")
                         dockerImage.push('latest')
                     }
                 }
@@ -99,7 +99,7 @@ pipeline {
         stage('Kubernetes deploy'){
             agent {label 'KOPS'}
             steps{
-                sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace kube-prod"
+                sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:v${BUILD_NUMBER} --namespace kube-prod"
             }
         }
     }
